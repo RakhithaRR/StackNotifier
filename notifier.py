@@ -9,7 +9,7 @@ def get_recent_questions(tag):
     response = requests.get(url)
     return json.loads(response.text)
 
-def get_questions_last_30_mins(tag):
+def get_questions_last_x_mins(tag):
     questions = get_recent_questions(tag)
     current_time = time.time()
     recent_questions = []
@@ -26,7 +26,7 @@ def create_message(question):
     return message
 
 def send_notification(message):    
-    url = "https://chat.googleapis.com/v1/spaces/AAAAyhqsyDE/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=utV3KFRazhyzbt2ZdKQxdbHde7QHd34BqUb_A2VCzf4"
+    url = "URL_PLACEHOLDER"
     app_message = {"text": message}
     message_headers = {"Content-Type": "application/json; charset=UTF-8"}
     http_obj = Http()
@@ -37,7 +37,7 @@ def send_notification(message):
         body=dumps(app_message),
     )
 
-questions = get_questions_last_30_mins('wso2-api-manager')
+questions = get_questions_last_x_mins('wso2-api-manager')
 for question in questions:
     msg = create_message(question)
     send_notification(msg)
