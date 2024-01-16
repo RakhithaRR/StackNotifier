@@ -2,8 +2,8 @@ name: Run Notifier
 
 on:
   workflow_dispatch:
-  # schedule:
-  #   - cron: '1 */2 * * *'
+  schedule:
+    - cron: '1 */2 * * *'
 
 jobs:
   build:
