@@ -23,7 +23,6 @@ jobs:
       run: pip install -r requirements.txt
     
     - name: Replace Webhook
-      env:
       run: |
         echo ${{ env.WEBHOOK_URL }} \
         && sed -i 's|URL_PLACEHOLDER|'"${{ env.WEBHOOK_URL }}"'|g' notifier.py \
