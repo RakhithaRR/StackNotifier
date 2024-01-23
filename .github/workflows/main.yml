@@ -24,8 +24,8 @@ jobs:
     
     - name: Replace Webhook
       run: |
-        echo ${{ secrets.WEBHOOK_URL }} \
-        && sed -i 's|URL_PLACEHOLDER|'"${{ secrets.WEBHOOK_URL }}"'|g' notifier.py \
+        export URL=${{ secrets.WEBHOOK_URL }} \
+        && sed -i 's|URL_PLACEHOLDER|'"$URL"'|g' notifier.py \
         && cat notifier.py
 
     - name: Run Notifer
