@@ -24,9 +24,7 @@ jobs:
     
     - name: Replace Webhook
       run: |
-        SECRET=$(echo "${{ secrets.WEBHOOK_SECRET }}" | sed -e 's/[\/&]/\\&/g') \
-        echo "The value of the secret is $SECRET" \
-        && sed -i "s|URL_PLACEHOLDER|$SECRET|g" notifier.py \
+        sed -i "s|URL_PLACEHOLDER|${{ secrets.WEBHOOK_SECRET }}|g" notifier.py \
         && cat notifier.py
 
     - name: Run Notifer
