@@ -27,7 +27,7 @@ jobs:
         WEBHOOK_URL: ${{ secrets.WEBHOOK_SECRET }}
       run: |
         echo "The Secret is $WEBHOOK_URL" \
-        && sed -i 's|URL_PLACEHOLDER|'"$WEBHOOK_URL"'|g' notifier.py \
+        && sed '' -i 's|URL_PLACEHOLDER|'"$WEBHOOK_URL"'|g' notifier.py \
         && cat notifier.py
 
     - name: Run Notifer
