@@ -26,7 +26,9 @@ def create_message(question):
     return message
 
 def send_notification(message):    
-    url = "URL_PLACEHOLDER"
+    # url = "URL_PLACEHOLDER"
+    url = "https://chat.googleapis.com/v1/spaces/AAAAvSeABMg/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=_7ItRMWVmFaCSrLR5yVzJcVuHHCP9ArzX-gNSi98DTI"
+
     app_message = {"text": message}
     message_headers = {"Content-Type": "application/json; charset=UTF-8"}
     http_obj = Http()
