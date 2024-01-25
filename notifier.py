@@ -16,7 +16,7 @@ def get_questions_last_x_mins(tag):
     for question in questions['items']:
         # The API returns time in Unix timestamp format, we convert it to seconds
         creation_time = question['creation_date']
-        if current_time - creation_time <= 7200:  # Check if the question was created in the last 2 hours (7200 seconds)
+        if current_time - creation_time <= 10800:  # Check if the question was created in the last 3 hours (10800 seconds)
             recent_questions.append(question)
     return recent_questions
 
