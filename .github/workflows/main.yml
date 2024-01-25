@@ -23,11 +23,9 @@ jobs:
       run: pip install -r requirements.txt
     
     - name: Replace Webhook
-      env:
-        WEBHOOK_URL: ${{ secrets.WEBHOOK_SECRET }}
       run: |
-        echo ${{ env.WEBHOOK_URL }} \
-        && sed -i "s|URL_PLACEHOLDER|${{ secrets.WEBHOOK_SECRET }}|g" notifier.py \
+        SECRET=$(echo "${{ secrets.WEBHOOK_SECRET }}" | sed -e 's/[\/&]/\\&/g') \
+        && sed -i "s|URL_PLACEHOLDER|$SECRET|g" notifier.py \
         && cat notifier.py
 
     - name: Run Notifer
